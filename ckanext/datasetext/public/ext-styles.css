@@ -2,18 +2,13 @@
     width: 25% !important;
     font-size: 12px !important;
 }
-table{
-    border-spacing: 20px 0;
-}
 
-th {
-    width: 30%;
-    padding-right: 20px;
-}
-.col-md-6{
+
+
+/*.col-md-6{
     width: 100% !important;
     padding-bottom: 3px!important ;
-}
+}*/
 .desc{
     width: 100%;
 }
@@ -21,6 +16,9 @@ th {
 .ckan_keywords div {
   padding-top: 3px;
   padding-bottom: 5px;
+}
+.controls{
+  width:100%;
 }
 
 
@@ -55,9 +53,10 @@ th {
   } 
 
   /************************* Custom css for Data type text box ********************/
-  .dataType{
-    padding: 20px;
-    
-
+  .radio{
+    font-weight: lighter;
   }
-
+  
+  
+  }
+  

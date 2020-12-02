@@ -13,13 +13,7 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_resource('fanstatic','datasetext')
     
     def _modify_package_schema(self, schema):
-       # schema.update({
-       #     'pid': [toolkit.get_converter('convert_to_extras')]
-       # })
-        
-        #schema.update({
-        #    'doi': [toolkit.get_converter('convert_to_extras')]
-        #})
+       
         schema.update({
             'pm': [toolkit.get_converter('convert_to_extras')]
         })
@@ -47,6 +41,28 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         schema.update({
             'abstract': [toolkit.get_converter('convert_to_extras')]
         })
+        schema.update({
+           'program_name':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'project_id':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'milestone_id':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'objective':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'dcm':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'dqam':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'storage':[toolkit.get_converter('convert_to_extras')]
+        })
+        
         
         return schema
 
@@ -109,9 +125,34 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             'abstract': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        #schema.update({
-        #    'doi': [toolkit.get_converter('convert_from_extras'),
-         #                   toolkit.get_validator('ignore_missing')]
-        #})
+        schema.update({
+           'program_name': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'project_id': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'milestone_id': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'objective': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'dcm': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'dqam': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'storage': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        
         return schema
 

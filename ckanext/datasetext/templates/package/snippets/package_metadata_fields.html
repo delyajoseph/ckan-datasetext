@@ -4,22 +4,21 @@
    
     {% block package_basic_fields_program %}
     
-    <div class="form-group">
+    <div class="form-group ">
       {% set error = errors.program_id %}
       <label class="control-label" for="field-program">{{ _("Program") }}</label>
         <div class="controls">
-            <div class="row">
-                <div class="col-md-6">
-                    <select id="field-program" name="program_id" data-module="autocomplete">
-                    {% set existing_program_id = data.get('program_id') %}
+            <div class="row ">
+                <div class="col-md-12">
+                    <select id="field-program" name="program_name" data-module="autocomplete">
+                    {% set existing_program_id = data.get('program_name') %}
                     {% set empty_program = _('Please select the Program') %}
                         <option value="">{{ empty_program }}</option>
-                        <option value="1">Program 1</option>
-                        <option value="2">Program 2</option>
-                        <option value="3">Program 3</option>
-              
-              
-                    </select>
+                        {% for program in h.program_list() %}
+                        <option value="{{ program }}" {% if existing_program_id == program %}selected="selected"{% endif %}>{{ program }}</option>
+                        {% endfor %}
+
+                    </select> 
              </div>
             </div>
         </div>
@@ -30,83 +29,88 @@
         <label class="control-label" for="field-project">{{ _("Project") }}</label>
             <div class="controls">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <select id="field-project" name="project_id" data-module="autocomplete">
                         {% set existing_project_id = data.get('project_id') %}
                         {% set empty_project = _('Please select the Project') %}
                             <option value="">{{ empty_project }}</option>
-                            <option value="proj1">Project 1</option>
-                            <option value="proj2">Project 2</option>
-                            <option value="proj3">Project 3</option>
-                            <option value="proj4">Project 4</option>
-                            <option value="proj5">Project 5</option>
-                            <option value="proj6">Project 6</option>
-                            <option value="proj7">Project 7</option>
-            
+
+                            {% for project in h.project_no() %}
+                            <option value="{{ project }}" {% if existing_project_id == project %}selected="selected"{% endif %}>{{ project }}</option>
+                            {% endfor %}
+                            
                           </select>
                     </div>
                 </div>
             </div>
     </div>
 
-        <table>
-            <th>
+       
+            
+        <div class="row">
+            <div class= "form-group col-lg-6 col-md-4">
             {% block package_basic_fields_pm %}
-                {{ form.input('pm', label=_('Project Manager'), id='field-pm', placeholder=_('Project manager'), value=data.pm, error=errors.pm, classes=['control-medium']) }}
+                {{ form.input('pm', label=_('Project Manager'), id='field-pm', placeholder=_('Project manager'), value=data.pm, error=errors.pm, classes=['control-label']) }}
             {% endblock %}
-            </th>
+            </div>
+          
         
-        
-            <th>
+            <div class= "form-group col-lg-6 col-md-4">
+            
             {% block package_basic_fields_pl %}
-                {{ form.input('pl', label=_('Project Leader'), id='field-pl', placeholder=_('Project Leader'), value=data.pl, error=errors.pl, classes=['control-medium']) }}
+                {{ form.input('pl', label=_('Project Leader'), id='field-pl', placeholder=_('Project Leader'), value=data.pl, error=errors.pl, classes=['control-label']) }}
             {% endblock %}
-            </th>
+            </div>
+        </div>
+            
         
-            <tr>
-                <th>
+            
+        <div class="row">  
+            <div class= "form-group col-lg-6 col-md-4">
+
                     {% block package_basic_fields_pmcntct %}
                         {{ form.input('pmcntct', label=_('Contact No'), id='field-pmcntct', placeholder=_('Contact No'), value=data.pmcntct, error=errors.pmcntct, classes=['control-medium']) }}
                     {% endblock %}
-                </th>
+            </div>    
         
-                <th>
+            <div class= "form-group col-lg-6 col-md-4">
                     {% block package_basic_fields_plcntct %}
                         {{ form.input('plcntct', label=_('Contact No'), id='field-plcntct', placeholder=_('Contact No'), value=data.plcntct, error=errors.plcntct, classes=['control-medium']) }}
                     {% endblock %}
-                </th>
-            </tr>
-            <tr>
-                <th>
+            </div>   
+        </div>            
+               
+            
+        <div class="row"> 
+            <div class= "form-group col-lg-6 col-md-4">           
                 {% block package_basic_fields_pmemail %}
                         {{ form.input('pmemail', label=_('Email'), id='field-pmemail', placeholder=_('Email'), value=data.pmemail, error=errors.pmemail, classes=['control-medium']) }}
                     {% endblock %}
-                </th> 
-                <th>
+            </div>        
+
+             <div class= "form-group col-lg-6 col-md-4">    
                     {% block package_basic_fields_plemail %}
                         {{ form.input('plemail', label=_('Email'), id='field-plemail', placeholder=_('Email'), value=data.plemail, error=errors.plemail, classes=['control-medium']) }}
                     {% endblock %}
-                
-                </th>  
-            </tr>
-            <tr>
-                <th>
+                </div>    
+        </div>        
+        <div class="row"> 
+            <div class= "form-group col-lg-6 col-md-4"> 
                     {% block package_basic_fields_pmpo %}
                         {{ form.input('pmpo', label=_('Partner Organisation'), id='field-pmpo', placeholder=_('Partner Organisation'), value=data.pmpo, error=errors.pmpo, classes=['control-medium']) }}
                     {% endblock %}
-                </th>
-                <th>
+             </div>  
+             <div class= "form-group col-lg-6 col-md-4">      
+                
                     {% block package_basic_fields_plpo %}
                         {{ form.input('plpo', label=_('Partner Organisation'), id='field-plpo', placeholder=_('Partner Organisation'), value=data.plpo, error=errors.plpo, classes=['control-medium']) }}
                     {% endblock %}
-                </th>
-            </tr>
-            
-           
-        </table>
+              </div>      
+         </div>     
+        
         <div class="form-group">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     {% block package_basic_fields_abstract %}
                         {{ form.markdown('abstract', id='field-abstract', label=_('Project Brief'), placeholder=_('Abstract of the project'), value=data.abstract, error=errors.abstract) }}
                     {% endblock %}
@@ -120,18 +124,15 @@
         <label class="control-label" for="field-project">{{ _("Milestone") }}</label>
             <div class="controls">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <select id="field-milestone" name="milestone_id" data-module="autocomplete">
                         {% set existing_milestone_id = data.get('milestone_id') %}
                         {% set empty_milestone = _('Please select the Milestone') %}
                             <option value="">{{ empty_milestone }}</option>
-                            <option value="mile1">Milestone 1</option>
-                            <option value="mile2">Milestone 2</option>
-                            <option value="mile3">Milestone 3</option>
-                            <option value="mile4">Milestone 4</option>
-                            <option value="mile5">Milestone 5</option>
-                            <option value="mile6">Milestone 6</option>
-                            <option value="mile7">Milestone 7</option>
+                            {% for mile in h.milestone() %}
+                            <option value="{{ mile }}" {% if existing_milestone_id == mile %}selected="selected"{% endif %}>{{ mile }}</option>
+                            {% endfor %}
+                            
             
                           </select>
                     </div>
@@ -140,7 +141,7 @@
     </div>
     <div class="form-group">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 {% block package_basic_fields_objective %}
                     {{ form.markdown('objective', id='field-objective', label=_('Objective of the Milestone'), placeholder=_('Objective of the milestone'), value=data.objective, error=errors.objective) }}
                 {% endblock %}
