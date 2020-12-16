@@ -18,64 +18,41 @@ function nextPrev(tab) {
       console.log('is not same');
       document.getElementById(t).style.display = "none";
     }
+
   }
 
 
 }
-
+let removedIds = [];
+var count = 0;
 function add() {
 
-
-  let allElements = document.getElementById("keywords");
-  let keys_id = allElements.getElementsByClassName("row").length;
-
-  keys_id++;
-
-  //create textbox
-  /*let input = document.createElement('input');
-  input.type = "text";
-  input.setAttribute("class", "form-control");
-  input.setAttribute('id', 'keys' + keys_id);*/
-  let keys = document.getElementById("keywords");
-
-  let input = createBlock(keys_id);
-
-  //create remove button
-  let remove = document.createElement('button');
-  remove.setAttribute('id', 'keysr' + keys_id);
-  remove.onclick = function (e) {
-    removeElement(e, keys_id);
-  };
-  remove.setAttribute("type", "button");
-  remove.innerHTML = "X";
-
-  //append elements
-  input.appendChild(remove);
-  keys.appendChild(input);
-
-  //let br = document.createElement("br");
-  //keys.appendChild(br);
+  let keys_id;
+  if(removedIds.length > 0){
+    keys_id = removedIds.pop();
+  }else{
+    keys_id = count;
+  }
+  
+  if(count > 2){
+    return;
+  }
+  count++;
+  
+  console.log("---- " + "keywordDiv" + keys_id);
+  document.getElementById("keywordDiv" + keys_id).style.display = 'block';
+  
 }
 
-function removeElement(e, keys_id) {
-  let button = e.target;
+function removeElement(n) {
+  count--;
+  removedIds.push(n);
+  document.getElementById("keywordDiv" + n).style.display = "none";
 
-  let div = document.getElementById("key_div" + keys_id);
-  div.parentNode.removeChild(div);
-  //let field = button.previousSibling;
-  /*let div = button.parentElement;
-  let br = button.nextSibling;
-  div.removeChild(button);
-  div.removeChild(field);
-  div.removeChild(br);
+  document.getElementById("keyword" + n).value = "";
+  document.getElementById("keywordBrief" + n).value = "";
   
-  let allElements = document.getElementById("keys");
-  let inputs = allElements.getElementsByTagName("input");
-  for(i=0;i<inputs.length;i++){
-    inputs[i].setAttribute('id', 'keys' + (i+1));
-    inputs[i].setAttribute('value', (i+1));
-    inputs[i].nextSibling.setAttribute('id', 'keysr' + (i+1));
-  }*/
+  
 }
 
 function createInput(id) {
@@ -83,6 +60,7 @@ function createInput(id) {
   input.type = "text";
   input.setAttribute("class", "form-control");
   input.setAttribute('id', id);
+  input.setAttribute('name', id);
 
   return input;
 }
@@ -99,9 +77,10 @@ function createBlock(id) {
   div2.setAttribute("class", "col-lg-7");
 
 
-  let keyword = createInput("key" + id);
-  let brief = createInput("brief" + id);
+  let keyword = createInput("keyword" + id);
+  let brief = createInput("keywordBrief" + id);
 
+  
   div1.appendChild(keyword);
   div2.appendChild(brief);
   maindiv.appendChild(div1);

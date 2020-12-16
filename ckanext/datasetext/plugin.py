@@ -62,8 +62,21 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         schema.update({
            'storage':[toolkit.get_converter('convert_to_extras')]
         })
+        schema.update({
+           'dataType':[toolkit.get_converter('convert_to_extras')]
+        })
+        schema.update({
+           'dataTypeInfo':[toolkit.get_converter('convert_to_extras')]
+        })
         
-        
+        for x in range(3):
+            schema.update({
+                'keyword' + str(x): [toolkit.get_converter('convert_to_extras')]                    
+            })
+            schema.update({
+                'keywordBrief' + str(x): [toolkit.get_converter('convert_to_extras')]
+            })
+
         return schema
 
 
@@ -153,6 +166,23 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'storage': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
+        schema.update({
+           'dataType': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'dataTypeInfo': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+
+        for x in range(3):
+            schema.update({
+                'keyword' + str(x): [toolkit.get_converter('convert_from_extras')]
+            })
+            schema.update({
+                'keywordBrief' + str(x): [toolkit.get_converter('convert_from_extras')]
+            })
+        
         
         return schema
 
