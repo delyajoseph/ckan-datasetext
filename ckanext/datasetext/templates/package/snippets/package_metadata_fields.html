@@ -6,11 +6,11 @@
     
     <div class="form-group ">
       {% set error = errors.program_id %}
-      <label class="control-label" for="field-program">{{ _("Program") }}</label>
+      <label class="control-label" for="field-program">{{ _("MinExCRC Research Program") }}</label>
         <div class="controls">
             <div class="row ">
                 <div class="col-md-12">
-                    <select id="field-program" name="program_name" data-module="autocomplete">
+                    <select id="field-program" name="program_name" class="form-control" >
                     {% set existing_program_id = data.get('program_name') %}
                     {% set empty_program = _('Please select the Program') %}
                         <option value="">{{ empty_program }}</option>
@@ -26,11 +26,11 @@
     {% endblock %}
     <div class="form-group">
         {% set error = errors.program_id %}
-        <label class="control-label" for="field-project">{{ _("Project") }}</label>
+        <label class="control-label" for="field-project">{{ _("MinExCRC Research Project") }}</label>
             <div class="controls">
                 <div class="row">
                     <div class="col-md-12">
-                        <select id="field-project" name="project_id" data-module="autocomplete">
+                        <select id="field-project" name="project_id"  class="form-control"> <!--data-module="autocomplete"-->
                         {% set existing_project_id = data.get('project_id') %}
                         {% set empty_project = _('Please select the Project') %}
                             <option value="">{{ empty_project }}</option>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class= "form-group col-lg-6 col-md-4">
             {% block package_basic_fields_pm %}
-                {{ form.input('pm', label=_('Project Manager'), id='field-pm', placeholder=_('Project manager'), value=data.pm, error=errors.pm, classes=['control-label']) }}
+                {{ form.input('pm', label=_('Program Leader'), id='field-pm', placeholder=_('Program Leader'), value=data.pm, error=errors.pm, classes=['control-label']) }}
             {% endblock %}
             </div>
           
@@ -97,13 +97,13 @@
         <div class="row"> 
             <div class= "form-group col-lg-6 col-md-4"> 
                     {% block package_basic_fields_pmpo %}
-                        {{ form.input('pmpo', label=_('Partner Organisation'), id='field-pmpo', placeholder=_('Partner Organisation'), value=data.pmpo, error=errors.pmpo, classes=['control-medium']) }}
+                        {{ form.input('pmpo', label=_('Program Leader Partner Organisation'), id='field-pmpo', placeholder=_('Program leader Partner Organisation'), value=data.pmpo, error=errors.pmpo, classes=['control-medium']) }}
                     {% endblock %}
              </div>  
              <div class= "form-group col-lg-6 col-md-4">      
                 
                     {% block package_basic_fields_plpo %}
-                        {{ form.input('plpo', label=_('Partner Organisation'), id='field-plpo', placeholder=_('Partner Organisation'), value=data.plpo, error=errors.plpo, classes=['control-medium']) }}
+                        {{ form.input('plpo', label=_('Project Leader Partner Organisation'), id='field-plpo', placeholder=_('Project Leader Partner Organisation'), value=data.plpo, error=errors.plpo, classes=['control-medium']) }}
                     {% endblock %}
               </div>      
          </div>     
@@ -112,7 +112,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {% block package_basic_fields_abstract %}
-                        {{ form.markdown('abstract', id='field-abstract', label=_('Project Brief'), placeholder=_('Abstract of the project'), value=data.abstract, error=errors.abstract) }}
+                        {{ form.markdown('abstract', id='field-abstract', label=_('Project Performance Target'), placeholder=_('Abstract of the project performance target'), value=data.abstract, error=errors.abstract) }}
                     {% endblock %}
 
                 </div>    
@@ -121,11 +121,11 @@
        </div>
        <div class="form-group">
         {% set error = errors.program_id %}
-        <label class="control-label" for="field-project">{{ _("Milestone") }}</label>
+        <label class="control-label" for="field-project">{{ _("Relevant project milestone no: ") }}</label>
             <div class="controls">
                 <div class="row">
                     <div class="col-md-12">
-                        <select id="field-milestone" name="milestone_id" data-module="autocomplete">
+                        <select id="field-milestone" name="milestone_id" class="form-control">
                         {% set existing_milestone_id = data.get('milestone_id') %}
                         {% set empty_milestone = _('Please select the Milestone') %}
                             <option value="">{{ empty_milestone }}</option>
@@ -143,7 +143,7 @@
         <div class="row">
             <div class="col-md-12">
                 {% block package_basic_fields_objective %}
-                    {{ form.markdown('objective', id='field-objective', label=_('Objective of the Milestone'), placeholder=_('Objective of the milestone'), value=data.objective, error=errors.objective) }}
+                    {{ form.markdown('objective', id='field-objective', label=_('Milestone description'), placeholder=_('Milestone description'), value=data.objective, error=errors.objective) }}
                 {% endblock %}
 
             </div>    

@@ -1,3 +1,7 @@
+html{
+  font-family: "Torque Web" !important;
+}
+
 .custom_stages li{
     width: 25% !important;
     font-size: 12px !important;
@@ -58,5 +62,48 @@
   }
   
   
-  }
   
+  
+  .account-masthead {
+    background-color:#002f41 !important;
+}
+.masthead{
+  background-color:#002f41 !important;
+  font-weight:bold !important;
+}
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li a:focus,
+.masthead .navigation .nav-pills li.active a
+ {
+  background-color: #002f41 !important;
+
+}
+.masthead .nav > li > a:hover,
+.masthead .nav > .active > a
+{
+  color: #f27221 !important;
+}
+.account-masthead .account ul li a {
+ 
+  color: #ffff !important;
+  
+}
+.account-masthead .account ul li a:hover {
+  color: #f27221 !important;
+  background-color: #002f41 !important;
+  text-decoration: none;
+}
+.homepage .module-search .module-content {
+  
+  background-color: #f27221 !important;
+  
+}
+.homepage .module-search {
+ 
+  color:  #002f41 !important;
+  background: #f27221 !important;
+  text-transform: uppercase !important;
+}
+.homepage .module-search .tags{
+  background-color: #f27221 !important;
+}
