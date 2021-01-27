@@ -1,113 +1,30 @@
 {% ckan_extends %}
 
+
+{% set keyresearchers_available = h.organizations_keyresearcher_available(data.group_id) %}
+  
+
 {% block package_metadata_fields %}
-   
-    {% block package_basic_fields_program %}
-    
-    <div class="form-group ">
-      {% set error = errors.program_id %}
-      <label class="control-label" for="field-program">{{ _("MinExCRC Research Program") }}</label>
+
+    <label for="field-keyresearcher" class="control-label">{{ _('Key Researcher') }}</label>
         <div class="controls">
-            <div class="row ">
-                <div class="col-md-12">
-                    <select id="field-program" name="program_name" class="form-control" >
-                    {% set existing_program_id = data.get('program_name') %}
-                    {% set empty_program = _('Please select the Program') %}
-                        <option value="">{{ empty_program }}</option>
-                        {% for program in h.program_list() %}
-                        <option value="{{ program }}" {% if existing_program_id == program %}selected="selected"{% endif %}>{{ program }}</option>
+            <div class="row"> 
+                <div class="form-group control-medium">
+                    <div class="controls">
+                    <select id="field-keyresearcher" name="keyresearcher"  class="form-control" >
+                        {% for kr in keyresearchers_available %}
+                        <option value="{{ kr.id }}">{{ kr.name }} - {{kr.organisation}}</option>
                         {% endfor %}
-
-                    </select> 
-             </div>
-            </div>
-        </div>
-    </div>  
-    {% endblock %}
-    <div class="form-group">
-        {% set error = errors.program_id %}
-        <label class="control-label" for="field-project">{{ _("MinExCRC Research Project") }}</label>
-            <div class="controls">
-                <div class="row">
-                    <div class="col-md-12">
-                        <select id="field-project" name="project_id"  class="form-control"> <!--data-module="autocomplete"-->
-                        {% set existing_project_id = data.get('project_id') %}
-                        {% set empty_project = _('Please select the Project') %}
-                            <option value="">{{ empty_project }}</option>
-
-                            {% for project in h.project_no() %}
-                            <option value="{{ project }}" {% if existing_project_id == project %}selected="selected"{% endif %}>{{ project }}</option>
-                            {% endfor %}
-                            
-                          </select>
+                    </select>
                     </div>
-                </div>
-            </div>
-    </div>
-
-       
-            
-        <div class="row">
-            <div class= "form-group col-lg-6 col-md-4">
-            {% block package_basic_fields_pm %}
-                {{ form.input('pm', label=_('Program Leader'), id='field-pm', placeholder=_('Program Leader'), value=data.pm, error=errors.pm, classes=['control-label']) }}
-            {% endblock %}
-            </div>
-          
-        
-            <div class= "form-group col-lg-6 col-md-4">
-            
-            {% block package_basic_fields_pl %}
-                {{ form.input('pl', label=_('Project Leader'), id='field-pl', placeholder=_('Project Leader'), value=data.pl, error=errors.pl, classes=['control-label']) }}
-            {% endblock %}
-            </div>
+                </div> 
+            </div>     
         </div>
-            
-        
-            
-        <div class="row">  
-            <div class= "form-group col-lg-6 col-md-4">
 
-                    {% block package_basic_fields_pmcntct %}
-                        {{ form.input('pmcntct', label=_('Contact No'), id='field-pmcntct', placeholder=_('Contact No'), value=data.pmcntct, error=errors.pmcntct, classes=['control-medium']) }}
-                    {% endblock %}
-            </div>    
         
-            <div class= "form-group col-lg-6 col-md-4">
-                    {% block package_basic_fields_plcntct %}
-                        {{ form.input('plcntct', label=_('Contact No'), id='field-plcntct', placeholder=_('Contact No'), value=data.plcntct, error=errors.plcntct, classes=['control-medium']) }}
-                    {% endblock %}
-            </div>   
-        </div>            
-               
-            
-        <div class="row"> 
-            <div class= "form-group col-lg-6 col-md-4">           
-                {% block package_basic_fields_pmemail %}
-                        {{ form.input('pmemail', label=_('Email'), id='field-pmemail', placeholder=_('Email'), value=data.pmemail, error=errors.pmemail, classes=['control-medium']) }}
-                    {% endblock %}
-            </div>        
 
-             <div class= "form-group col-lg-6 col-md-4">    
-                    {% block package_basic_fields_plemail %}
-                        {{ form.input('plemail', label=_('Email'), id='field-plemail', placeholder=_('Email'), value=data.plemail, error=errors.plemail, classes=['control-medium']) }}
-                    {% endblock %}
-                </div>    
-        </div>        
-        <div class="row"> 
-            <div class= "form-group col-lg-6 col-md-4"> 
-                    {% block package_basic_fields_pmpo %}
-                        {{ form.input('pmpo', label=_('Program Leader Partner Organisation'), id='field-pmpo', placeholder=_('Program leader Partner Organisation'), value=data.pmpo, error=errors.pmpo, classes=['control-medium']) }}
-                    {% endblock %}
-             </div>  
-             <div class= "form-group col-lg-6 col-md-4">      
-                
-                    {% block package_basic_fields_plpo %}
-                        {{ form.input('plpo', label=_('Project Leader Partner Organisation'), id='field-plpo', placeholder=_('Project Leader Partner Organisation'), value=data.plpo, error=errors.plpo, classes=['control-medium']) }}
-                    {% endblock %}
-              </div>      
-         </div>     
-        
+
+
         <div class="form-group">
             <div class="row">
                 <div class="col-md-12">

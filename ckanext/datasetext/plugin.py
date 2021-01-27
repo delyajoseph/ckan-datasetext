@@ -13,43 +13,49 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_resource('fanstatic','datasetext')
     
     def _modify_package_schema(self, schema):
-       
-        schema.update({
-            'pm': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'pl': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'pmcntct': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'plcntct': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'pmemail': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'plemail': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'pmpo': [toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-            'plpo': [toolkit.get_converter('convert_to_extras')]
-        })
+
+
+    #    schema.update({
+    #        'pm': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'pl': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'pmcntct': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'plcntct': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'pmemail': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'plemail': [toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #        'pmpo': [toolkit.get_converter('convert_to_extras')]
+    #    })
+        #schema.update({
+         #   'plpo': [toolkit.get_converter('convert_to_extras')]
+        #})
         schema.update({
             'abstract': [toolkit.get_converter('convert_to_extras')]
         })
-        schema.update({
-           'program_name':[toolkit.get_converter('convert_to_extras')]
-        })
-        schema.update({
-           'project_id':[toolkit.get_converter('convert_to_extras')]
-        })
+    #    schema.update({
+    #       'program_name':[toolkit.get_converter('convert_to_extras')]
+    #    })
+    #    schema.update({
+    #       'project_id':[toolkit.get_converter('convert_to_extras')]
+    #    })
         schema.update({
            'milestone_id':[toolkit.get_converter('convert_to_extras')]
         })
+        schema.update({
+           'keyresearcher':[toolkit.get_converter('convert_to_extras')]
+        })
+
+        
         schema.update({
            'objective':[toolkit.get_converter('convert_to_extras')]
         })
@@ -102,52 +108,56 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def show_package_schema(self):
         schema = super(DatasetextPlugin, self).show_package_schema()
-        schema.update({
-            'pm': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'pl': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'pmcntct': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'plcntct': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'pmemail': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'plemail': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'pmpo': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-            'plpo': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+    #    schema.update({
+    #        'pm': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #        'pl': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #        'pmcntct': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #        'plcntct': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #        'pmemail': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #        'plemail': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+       # schema.update({
+        #    'pmpo': [toolkit.get_converter('convert_from_extras'),
+         #                   toolkit.get_validator('ignore_missing')]
+        #})
+        #schema.update({
+        #    'plpo': [toolkit.get_converter('convert_from_extras'),
+         #                   toolkit.get_validator('ignore_missing')]
+        #})
         schema.update({
             'abstract': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        schema.update({
-           'program_name': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
-        schema.update({
-           'project_id': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+    #    schema.update({
+    #       'program_name': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
+    #    schema.update({
+    #       'project_id': [toolkit.get_converter('convert_from_extras'),
+    #                        toolkit.get_validator('ignore_missing')]
+    #    })
         schema.update({
            'milestone_id': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        schema.update({
+           'keyresearcher': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
         schema.update({
