@@ -2,80 +2,66 @@
 
 
 {% set keyresearchers_available = h.organizations_keyresearcher_available(data.group_id) %}
-  
+
 
 {% block package_metadata_fields %}
 
+
+<div class="form-group">
     <label for="field-keyresearcher" class="control-label">{{ _('Key Researcher') }}</label>
-        <div class="controls">
-            <div class="row"> 
-                <div class="form-group control-medium">
-                    <div class="controls">
-                    <select id="field-keyresearcher" name="keyresearcher"  class="form-control" >
-                        {% set existing_kr_id = data.get('keyresearcher') %}
-                        
-                        {% for kr in keyresearchers_available %}
-                        <option value="{{ kr.id }}"  {% if existing_kr_id == kr.id %} selected="selected"{% endif %}>{{ kr.name }} - {{kr.organisation}}</option>
-                        {% endfor %}
-                    </select>
-                   <!-- <select id="field-milestone" name="milestone_id" class="form-control">
-                        {% set existing_milestone_id = data.get('milestone_id') %}
-                        {% set empty_milestone = _('Please select the Milestone') %}
-                            <option value="">{{ empty_milestone }}</option>
-                            {% for mile in h.milestone() %}
-                            <option value="{{ mile }}" {% if existing_milestone_id == mile %}selected="selected"{% endif %}>{{ mile }}</option>
-                            {% endfor %}-->
-                            
-
-                    </div>
-                </div> 
-            </div>     
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-12">
-                    {% block package_basic_fields_abstract %}
-                        {{ form.markdown('abstract', id='field-abstract', label=_('Project Performance Target'), placeholder=_('Abstract of the project performance target'), value=data.abstract, error=errors.abstract) }}
-                    {% endblock %}
-
-                </div>    
-
-            </div>
-       </div>
-       <div class="form-group">
-        {% set error = errors.program_id %}
-        <label class="control-label" for="field-project">{{ _("Relevant project milestone no: ") }}</label>
-            <div class="controls">
-                <div class="row">
-                    <div class="col-md-12">
-                        <select id="field-milestone" name="milestone_id" class="form-control">
-                        {% set existing_milestone_id = data.get('milestone_id') %}
-                        {% set empty_milestone = _('Please select the Milestone') %}
-                            <option value="">{{ empty_milestone }}</option>
-                            {% for mile in h.milestone() %}
-                            <option value="{{ mile }}" {% if existing_milestone_id == mile %}selected="selected"{% endif %}>{{ mile }}</option>
-                            {% endfor %}
-                            
-            
-                          </select>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <div class="form-group">
+    <div class="controls">
         <div class="row">
             <div class="col-md-12">
-                {% block package_basic_fields_objective %}
-                    {{ form.markdown('objective', id='field-objective', label=_('Milestone description'), placeholder=_('Milestone description'), value=data.objective, error=errors.objective) }}
-                {% endblock %}
-
-            </div>    
-
+                <select id="field-keyresearcher" name="keyresearcher" class="form-control">
+                    {% set existing_kr_id = data.get('keyresearcher') %}
+                    {% for kr in keyresearchers_available %}
+                    <option value="{{ kr.id }}" {% if existing_kr_id == kr.id %} selected="selected" {% endif %}>
+                        {{ kr.name }} - {{kr.organisation}}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-   </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            {% block package_basic_fields_abstract %}
+            {{ form.markdown('abstract', id='field-abstract', label=_('Project Performance Target'), placeholder=_('Abstract of the project performance target'), value=data.abstract, error=errors.abstract) }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    {% set error = errors.program_id %}
+    <label class="control-label" for="field-project">{{ _("Relevant project milestone no: ") }}</label>
+    <div class="controls">
+        <div class="row">
+            <div class="col-md-12">
+                <select id="field-milestone" name="milestone_id" class="form-control">
+                    {% set existing_milestone_id = data.get('milestone_id') %}
+                    {% set empty_milestone = _('Please select the Milestone') %}
+                    <option value="">{{ empty_milestone }}</option>
+                    {% for mile in h.milestone() %}
+                    <option value="{{ mile }}" {% if existing_milestone_id == mile %}selected="selected" {% endif %}>
+                        {{ mile }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            {% block package_basic_fields_objective %}
+            {{ form.markdown('objective', id='field-objective', label=_('Milestone description'), placeholder=_('Milestone description'), value=data.objective, error=errors.objective) }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
-
-    
-

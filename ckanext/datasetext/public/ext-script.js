@@ -5,23 +5,13 @@ nextPrev(currentTab); // Display the current tab
 
 
 function nextPrev(tab) {
-  console.log(' next tab .....................' + tab);
-
-
   for (t of tabs) {
-    console.log('t --> ' + t);
-
     if (t == tab) {
-      console.log('is same');
       document.getElementById(t).style.display = "block";
     } else {
-      console.log('is not same');
       document.getElementById(t).style.display = "none";
     }
-
   }
-
-
 }
 
 
@@ -123,13 +113,13 @@ function showProp() {
 function show(val){
   var type = document.getElementById('datatype');
   type.style.display = 'block';
-  if(val == 1){
+  if(val == '1'){
     type.setAttribute("placeholder", "Description");
   }
-  if(val == 2){
+  if(val == '2'){
     type.setAttribute("placeholder", "Write specifications");
   }
-  if(val == 3){
+  if(val == '3'){
     type.setAttribute("placeholder", "Share the data format and description");
   }
 }
