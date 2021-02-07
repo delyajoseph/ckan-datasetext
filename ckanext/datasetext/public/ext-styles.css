@@ -107,3 +107,114 @@ html{
 .homepage .module-search .tags{
   background-color: #f27221 !important;
 }
+
+.no-border {
+  border-bottom: none !important;
+}
+.mostly-customized-scrollbar {
+  display: block;
+  position: absolute;
+  width: 170px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 1000px;
+  transform: rotate(-90deg) translateY(-90px);
+  transform-origin: right top;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa; /* or add it to the track */
+}
+
+/* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background: #f27221;
+}
+
+
+
+
+/*::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}
+
+
+.horizontal-scroll-wrapper{
+  position:absolute;
+  display:block;
+  top:0;
+  left:0;
+  width:170px;
+  max-height:1000px;
+  margin:0;
+  /*background:#abc;
+  overflow-y:auto;
+  overflow-x:hidden;
+  transform:rotate(-90deg) translateY(-80px);
+  transform-origin:right top;
+}*/
+.horizontal-scroll-wrapper > div{
+  display:block;
+  padding:5px;
+  transform:rotate(90deg);
+  transform-origin: right top;
+}
+
+
+.rectangles{
+  /*top:10px;*/
+  padding:250px 0 0 0;
+}
+.rectangles > div {
+  color: #fff;
+  width:240px;
+  height:300px;
+  margin:50px 10px;
+  padding:25px 0 0 0;
+  /*background:#cab;*/
+  transform:rotate(90deg) translateY(80px);
+  transform-origin: right top;
+}
+
+.projects-bg{
+  background: url(images/bg-slider-trans.png) repeat;
+  min-height: 250px;
+  width: 100%;
+}
+
+.media-heading > a {
+  color: #fff;
+}
+
+.media-heading > a {
+  color: #fff;
+}
+
+.media-heading > a:hover, a:focus {
+  color: #f27221;
+}
+
+.module-image{
+  float: none !important;
+}
+
+.module-image img {
+  width: 150px;
+  height: 90px;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.prosearch{
+  padding-bottom: 30px;
+}
+
+.main{
+  min-height: 500px !important;
+}
+
+input#is_keyresearcher {
+  width: 15px !important;
+  display: initial;
+  height: 15px;
+}
