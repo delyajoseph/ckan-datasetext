@@ -3,6 +3,17 @@ var currentTab = 'tab1'; // Current tab is set to be the first tab (0)
 var tabs = ['tab1', 'tab2', 'tab3', 'tab4'];
 nextPrev(currentTab); // Display the current tab
 
+window.addEventListener("load",function(){
+  var selectOrg = document.getElementById("field-organizations");
+
+  var selectKr = document.getElementById("field-keyresearcher");
+  
+  selectedKr_id = selectKr.options[selectKr.selectedIndex].id;
+  //console.log('selectedKr --- ' + selectedKr_id);
+  //console.log('onload ---> ' + selectOrg.value);
+
+  update_key_researcher(selectOrg, selectedKr_id);
+},false);
 
 function nextPrev(tab) {
   for (t of tabs) {
@@ -14,6 +25,32 @@ function nextPrev(tab) {
   }
 }
 
+
+function update_key_researcher(selOrg ,selKr_id){
+  //console.log(selOrg.value);
+
+  var select = document.getElementById("field-keyresearcher");
+  select.value = null;
+ 
+  var length = select.options.length;
+  for (i = length-1; i >= 0; i--) {
+    //console.log('select options id for kr : '+ select.options[i].id);
+    var option_to_display = selOrg.value + ":" + select.options[i].value;
+    //console.log('option_to_display --- '+option_to_display);
+    //console.log('selKr --- '+ selKr_id);
+    if(selKr_id && selKr_id === option_to_display){
+      //console.log('selected id --- ' + selKr_id)
+      select.options[i].selected = "selected";
+    }
+    if(option_to_display == select.options[i].id){
+      select.options[i].style.display = "block";
+    }else{
+      select.options[i].style.display = "none";
+    }
+    //select.options[i] = null;
+  }
+
+}
 
 let removedIds = [];
 var count = 0;
