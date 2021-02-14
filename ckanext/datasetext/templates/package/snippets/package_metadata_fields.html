@@ -15,7 +15,7 @@
                 <select id="field-keyresearcher" name="keyresearcher" class="form-control">
                     {% set existing_kr_id = data.get('keyresearcher') %}
                     {% for kr in keyresearchers_available %}
-                    <option value="{{ kr.id }}" {% if existing_kr_id == kr.id %} selected="selected" {% endif %}>
+                    <option id="{{kr.group_id}}:{{kr.id}}" value="{{ kr.id }}" {% if existing_kr_id == kr.id %} selected="selected" {% endif %}>
                         {{ kr.name }} - {{kr.organisation}}</option>
                     {% endfor %}
                 </select>
