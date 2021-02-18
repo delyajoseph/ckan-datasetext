@@ -44,21 +44,26 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'dqam':[toolkit.get_converter('convert_to_extras')]
         })
         schema.update({
-           'storage':[toolkit.get_converter('convert_to_extras')]
+           'storage':[toolkit.get_converter('convert_to_extras'),
+                            toolkit.get_validator('ignore_missing')]
         })
         schema.update({
-           'dataType':[toolkit.get_converter('convert_to_extras')]
+           'dataType':[toolkit.get_converter('convert_to_extras'),
+                            toolkit.get_validator('ignore_missing')]
         })
         schema.update({
-           'dataTypeInfo':[toolkit.get_converter('convert_to_extras')]
+           'dataTypeInfo':[toolkit.get_converter('convert_to_extras'),
+                            toolkit.get_validator('ignore_missing')]
         })
         
         for x in range(3):
             schema.update({
-                'keyword' + str(x): [toolkit.get_converter('convert_to_extras')]                    
+                'keyword' + str(x): [toolkit.get_converter('convert_to_extras'),
+                            toolkit.get_validator('ignore_missing')]                    
             })
             schema.update({
-                'keywordBrief' + str(x): [toolkit.get_converter('convert_to_extras')]
+                'keywordBrief' + str(x): [toolkit.get_converter('convert_to_extras'),
+                            toolkit.get_validator('ignore_missing')]
             })
 
         return schema

@@ -17,6 +17,15 @@ window.addEventListener("load",function(){
 
 function nextPrev(tab) {
   for (t of tabs) {
+
+    if(tab == 'tab3'){
+      var is_success = validateTab2Fields();
+      if(!is_success) {
+        alert('Select Key Researcher.' );
+        return;
+      }
+    }
+
     if (t == tab) {
       document.getElementById(t).style.display = "block";
     } else {
@@ -25,6 +34,12 @@ function nextPrev(tab) {
   }
 }
 
+function validateTab2Fields(){
+  keyR = document.getElementById('field-keyresearcher');
+  if(keyR.value){
+    return true;
+  }
+}
 
 function update_key_researcher(selOrg ,selKr_id){
   //console.log(selOrg.value);
@@ -148,15 +163,16 @@ function showProp() {
 
 
 function show(val){
+  console.log('show --> val: ' + val);
   var type = document.getElementById('datatype');
   type.style.display = 'block';
-  if(val == '1'){
+  if(val == 'generic'){
     type.setAttribute("placeholder", "Description");
   }
-  if(val == '2'){
+  if(val == 'softwareSpecific'){
     type.setAttribute("placeholder", "Write specifications");
   }
-  if(val == '3'){
+  if(val == 'prop'){
     type.setAttribute("placeholder", "Share the data format and description");
   }
 }
