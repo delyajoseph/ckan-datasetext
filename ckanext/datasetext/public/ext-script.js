@@ -1,6 +1,6 @@
 var currentTab = 'tab1'; // Current tab is set to be the first tab (0)
 //showTab(currentTab);
-var tabs = ['tab1', 'tab2', 'tab3', 'tab4'];
+var tabs = ['tab1', 'tab2', 'tab3'];
 nextPrev(currentTab); // Display the current tab
 
 window.addEventListener("load",function(){
@@ -41,14 +41,24 @@ function validateTab2Fields(){
   }
 }
 
+function update_ppt(){
+  
+  var sel = document.getElementById('field-organizations')
+  var selected = sel.options[sel.selectedIndex]
+  var abstract = selected.getAttribute('data-abstract')
+  console.log('abstract -- '+abstract);
+
+  document.getElementById('ppt').value = abstract;
+}
 function update_key_researcher(selOrg ,selKr_id){
   //console.log(selOrg.value);
 
   var select = document.getElementById("field-keyresearcher");
   select.value = null;
- 
+  
   var length = select.options.length;
   for (i = length-1; i >= 0; i--) {
+
     //console.log('select options id for kr : '+ select.options[i].id);
     var option_to_display = selOrg.value + ":" + select.options[i].value;
     //console.log('option_to_display --- '+option_to_display);
@@ -83,7 +93,6 @@ function add() {
   }
   count++;
   
-  console.log("---- " + "keywordDiv" + keys_id);
   document.getElementById("keywordDiv" + keys_id).style.display = 'block';
   
 }

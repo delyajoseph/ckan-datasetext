@@ -22,9 +22,9 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         #schema.update({
         #    'upln': [toolkit.get_converter('convert_to_extras')]
         #})
-        schema.update({
-            'abstract': [toolkit.get_converter('convert_to_extras')]
-        })
+        #schema.update({
+        #    'abstract': [toolkit.get_converter('convert_to_extras')]
+        #})
     
         schema.update({
            'milestone_id':[toolkit.get_converter('convert_to_extras')]
@@ -51,10 +51,10 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'dataType':[toolkit.get_converter('convert_to_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        schema.update({
-           'dataTypeInfo':[toolkit.get_converter('convert_to_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+        #schema.update({
+           #'dataTypeInfo':[toolkit.get_converter('convert_to_extras'),
+           #                 toolkit.get_validator('ignore_missing')]
+       # })
         
         for x in range(3):
             schema.update({
@@ -101,10 +101,10 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         #                   toolkit.get_validator('ignore_missing')]
         #})
       
-        schema.update({
-            'abstract': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+        #schema.update({
+        #    'abstract': [toolkit.get_converter('convert_from_extras'),
+        #                    toolkit.get_validator('ignore_missing')]
+       # })
    
         schema.update({
            'milestone_id': [toolkit.get_converter('convert_from_extras'),
@@ -134,10 +134,10 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'dataType': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        schema.update({
-           'dataTypeInfo': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+       # schema.update({
+        #   'dataTypeInfo': [toolkit.get_converter('convert_from_extras'),
+        #                    toolkit.get_validator('ignore_missing')]
+        #})
 
         for x in range(3):
             schema.update({

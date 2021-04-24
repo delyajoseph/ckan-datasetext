@@ -27,9 +27,11 @@
 <div class="form-group">
     <div class="row">
         <div class="col-md-12">
-            {% block package_basic_fields_abstract %}
+           {# <!--{% block package_basic_fields_abstract %}
             {{ form.markdown('abstract', id='field-abstract', label=_('Project Performance Target'), placeholder=_('Abstract of the project performance target'), value=data.abstract, error=errors.abstract) }}
-            {% endblock %}
+            {% endblock %}-->#}
+            <label>Project Performance Target:</label>
+            <input id="ppt" type="text" class="form-control" disabled/>
         </div>
     </div>
 </div>
