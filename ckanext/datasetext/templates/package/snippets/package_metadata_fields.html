@@ -2,11 +2,11 @@
 
 
 {% set keyresearchers_available = h.organizations_keyresearcher_available(data.group_id) %}
+{% set organizations_milestones_available = h.organizations_milestones_available() %}
 
 
 {% block package_metadata_fields %}
-
-
+  
 <div class="form-group">
     <label for="field-keyresearcher" class="control-label">{{ _('Key Researcher') }}</label>
     <div class="controls">
@@ -37,18 +37,17 @@
 </div>
 
 <div class="form-group">
-    {% set error = errors.program_id %}
-    <label class="control-label" for="field-project">{{ _("Relevant project milestone no: ") }}</label>
+    <!--{% set error = errors.program_id %}-->
+    <label class="control-label" for="field-milestone">{{ _("Relevant project milestone no ") }}</label>
     <div class="controls">
         <div class="row">
             <div class="col-md-12">
-                <select id="field-milestone" name="milestone_id" class="form-control">
-                    {% set existing_milestone_id = data.get('milestone_id') %}
+           
+               <select id="field-milestone" name="milestone_id" class="form-control" onchange="display_milestone_stmt()">
                     {% set empty_milestone = _('Please select the Milestone') %}
                     <option value="">{{ empty_milestone }}</option>
-                    {% for mile in h.milestone() %}
-                    <option value="{{ mile }}" {% if existing_milestone_id == mile %}selected="selected" {% endif %}>
-                        {{ mile }}</option>
+                    {% for ml in organizations_milestones_available %}
+                    <option id="{{ml.id}}" data-mile_stmt="{{ml.m_stmt}}" data-groupid="{{ml.group_id}}" value="{{ ml.id }}">{{ ml.m_id }} - {{ ml.m_due }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -57,11 +56,11 @@
 </div>
 
 <div class="form-group">
+    <label class="control-label" for="field-milestone">{{ _("Milestone statement") }}</label>
+    
     <div class="row">
         <div class="col-md-12">
-            {% block package_basic_fields_objective %}
-            {{ form.markdown('objective', id='field-objective', label=_('Milestone description'), placeholder=_('Milestone description'), value=data.objective, error=errors.objective) }}
-            {% endblock %}
+            <input id="mile_stmt" type="text" class="form-control" disabled/>
         </div>
     </div>
 </div>

@@ -9,6 +9,7 @@ window.addEventListener("load",function(){
   var selectKr = document.getElementById("field-keyresearcher");
   
   selectedKr_id = selectKr.options[selectKr.selectedIndex].id;
+
   //console.log('selectedKr --- ' + selectedKr_id);
   //console.log('onload ---> ' + selectOrg.value);
 
@@ -50,6 +51,46 @@ function update_ppt(){
 
   document.getElementById('ppt').value = abstract;
 }
+
+function display_milestone_stmt(){
+
+  var sel = document.getElementById('field-milestone')
+  var selected = sel.options[sel.selectedIndex]
+  var milestone = selected.getAttribute('data-mile_stmt')
+  document.getElementById('mile_stmt').value = milestone; 
+}
+
+
+function filter_milestone(selOrg){
+
+  reset_milestone();
+
+  var select = document.getElementById("field-milestone");
+  var length = select.options.length;
+ 
+  //iterate over all milestones
+  for (i = 0; i < length; i++) {
+
+    var selected = select.options[i];
+    var group_id = selected.getAttribute('data-groupid');
+    if(selOrg.value == group_id){
+      select.options[i].style.display = "block";
+    }else{
+      select.options[i].style.display = "none";
+    }
+  
+  }
+
+}
+
+function reset_milestone(){
+  document.getElementById('mile_stmt').value = '';
+  var sel = document.getElementById('field-milestone');
+  if(sel.selectedIndex)
+    sel.selectedIndex = 'None';
+}
+
+
 function update_key_researcher(selOrg ,selKr_id){
   //console.log(selOrg.value);
 
