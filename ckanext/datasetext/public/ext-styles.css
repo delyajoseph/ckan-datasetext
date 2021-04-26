@@ -3,7 +3,7 @@ html{
 }
 
 .custom_stages li{
-    width: 25% !important;
+   /* width: 25% !important;*/
     font-size: 12px !important;
 }
 

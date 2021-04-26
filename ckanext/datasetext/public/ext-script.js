@@ -1,6 +1,6 @@
 var currentTab = 'tab1'; // Current tab is set to be the first tab (0)
 //showTab(currentTab);
-var tabs = ['tab1', 'tab2', 'tab3', 'tab4'];
+var tabs = ['tab1', 'tab2', 'tab3'];
 nextPrev(currentTab); // Display the current tab
 
 window.addEventListener("load",function(){
@@ -9,6 +9,7 @@ window.addEventListener("load",function(){
   var selectKr = document.getElementById("field-keyresearcher");
   
   selectedKr_id = selectKr.options[selectKr.selectedIndex].id;
+
   //console.log('selectedKr --- ' + selectedKr_id);
   //console.log('onload ---> ' + selectOrg.value);
 
@@ -41,14 +42,64 @@ function validateTab2Fields(){
   }
 }
 
+function update_ppt(){
+  
+  var sel = document.getElementById('field-organizations')
+  var selected = sel.options[sel.selectedIndex]
+  var abstract = selected.getAttribute('data-abstract')
+  console.log('abstract -- '+abstract);
+
+  document.getElementById('ppt').value = abstract;
+}
+
+function display_milestone_stmt(){
+
+  var sel = document.getElementById('field-milestone')
+  var selected = sel.options[sel.selectedIndex]
+  var milestone = selected.getAttribute('data-mile_stmt')
+  document.getElementById('mile_stmt').value = milestone; 
+}
+
+
+function filter_milestone(selOrg){
+
+  reset_milestone();
+
+  var select = document.getElementById("field-milestone");
+  var length = select.options.length;
+ 
+  //iterate over all milestones
+  for (i = 0; i < length; i++) {
+
+    var selected = select.options[i];
+    var group_id = selected.getAttribute('data-groupid');
+    if(selOrg.value == group_id){
+      select.options[i].style.display = "block";
+    }else{
+      select.options[i].style.display = "none";
+    }
+  
+  }
+
+}
+
+function reset_milestone(){
+  document.getElementById('mile_stmt').value = '';
+  var sel = document.getElementById('field-milestone');
+  if(sel.selectedIndex)
+    sel.selectedIndex = 'None';
+}
+
+
 function update_key_researcher(selOrg ,selKr_id){
   //console.log(selOrg.value);
 
   var select = document.getElementById("field-keyresearcher");
   select.value = null;
- 
+  
   var length = select.options.length;
   for (i = length-1; i >= 0; i--) {
+
     //console.log('select options id for kr : '+ select.options[i].id);
     var option_to_display = selOrg.value + ":" + select.options[i].value;
     //console.log('option_to_display --- '+option_to_display);
@@ -83,7 +134,6 @@ function add() {
   }
   count++;
   
-  console.log("---- " + "keywordDiv" + keys_id);
   document.getElementById("keywordDiv" + keys_id).style.display = 'block';
   
 }
