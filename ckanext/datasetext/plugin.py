@@ -26,17 +26,17 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         #    'abstract': [toolkit.get_converter('convert_to_extras')]
         #})
     
-        schema.update({
-           'milestone_id':[toolkit.get_converter('convert_to_extras')]
-        })
+        #schema.update({
+        #   'milestone_id':[toolkit.get_converter('convert_to_extras')]
+        #})
         schema.update({
            'keyresearcher':[toolkit.get_converter('convert_to_extras')]
         })
 
         
-        schema.update({
-           'objective':[toolkit.get_converter('convert_to_extras')]
-        })
+        #schema.update({
+        #   'objective':[toolkit.get_converter('convert_to_extras')]
+        #})
         schema.update({
            'dcm':[toolkit.get_converter('convert_to_extras')]
         })
@@ -51,10 +51,7 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'dataType':[toolkit.get_converter('convert_to_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        #schema.update({
-           #'dataTypeInfo':[toolkit.get_converter('convert_to_extras'),
-           #                 toolkit.get_validator('ignore_missing')]
-       # })
+       
         
         for x in range(3):
             schema.update({
@@ -92,32 +89,25 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def show_package_schema(self):
         schema = super(DatasetextPlugin, self).show_package_schema()
    
-        #schema.update({
-        #'upln': [toolkit.get_converter('convert_from_extras'),
-        #                    toolkit.get_validator('ignore_missing')]
-        #})
-        #schema.update({
-        #  'uplemail': [toolkit.get_converter('convert_from_extras'),
-        #                   toolkit.get_validator('ignore_missing')]
-        #})
+        
       
         #schema.update({
         #    'abstract': [toolkit.get_converter('convert_from_extras'),
         #                    toolkit.get_validator('ignore_missing')]
        # })
    
-        schema.update({
-           'milestone_id': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+        #schema.update({
+        #   'milestone_id': [toolkit.get_converter('convert_from_extras'),
+        #                    toolkit.get_validator('ignore_missing')]
+       # })
         schema.update({
            'keyresearcher': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-        schema.update({
-           'objective': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('ignore_missing')]
-        })
+        #schema.update({
+        #   'objective': [toolkit.get_converter('convert_from_extras'),
+          #                  toolkit.get_validator('ignore_missing')]
+        #})
         schema.update({
            'dcm': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
@@ -134,10 +124,10 @@ class DatasetextPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
            'dataType': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
-       # schema.update({
-        #   'dataTypeInfo': [toolkit.get_converter('convert_from_extras'),
-        #                    toolkit.get_validator('ignore_missing')]
-        #})
+        schema.update({
+          'dataTypeInfo': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
 
         for x in range(3):
             schema.update({
