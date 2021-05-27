@@ -5,7 +5,7 @@ nextPrev(currentTab); // Display the current tab
 
 window.addEventListener("load",function(){
   var selectOrg = document.getElementById("field-organizations");
-
+  //document.getElementById("field-mile_stmt").disabled = true
   var selectKr = document.getElementById("field-keyresearcher");
   
   selectedKr_id = selectKr.options[selectKr.selectedIndex].id;
@@ -57,7 +57,11 @@ function display_milestone_stmt(){
   var sel = document.getElementById('field-milestone')
   var selected = sel.options[sel.selectedIndex]
   var milestone = selected.getAttribute('data-mile_stmt')
-  document.getElementById('mile_stmt').value = milestone; 
+  document.getElementById('field-mile_stmt').value = milestone; 
+
+  var m_id = selected.getAttribute('data-mile_stmtid');
+  document.getElementById('field-mile_stmtid').value = m_id; 
+  
 }
 
 
@@ -67,24 +71,29 @@ function filter_milestone(selOrg){
 
   var select = document.getElementById("field-milestone");
   var length = select.options.length;
+
+  console.log('============ select=============='+select)
  
   //iterate over all milestones
   for (i = 0; i < length; i++) {
 
     var selected = select.options[i];
     var group_id = selected.getAttribute('data-groupid');
+    
+    console.log(selOrg.value + '-----' + group_id);
     if(selOrg.value == group_id){
       select.options[i].style.display = "block";
     }else{
       select.options[i].style.display = "none";
     }
+    
   
   }
-
+  console.log('group_id -- '+group_id);
 }
 
 function reset_milestone(){
-  document.getElementById('mile_stmt').value = '';
+  document.getElementById('field-mile_stmt').value = '';
   var sel = document.getElementById('field-milestone');
   if(sel.selectedIndex)
     sel.selectedIndex = 'None';
