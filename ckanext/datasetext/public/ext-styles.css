@@ -218,3 +218,7 @@ input#is_keyresearcher {
   display: initial;
   height: 15px;
 }
+
+.milestone-hide {
+  visibility: hidden;
+}

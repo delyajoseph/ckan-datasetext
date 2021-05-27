@@ -80,9 +80,9 @@
 
 {% set existing_mile_smtid = data.get('mile_stmtid') %}
 {% if existing_mile_smtid ==''%} 
-{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''),classes=['control-full'], attrs={'hidden': 'true'}) }}
+{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''),classes=['control-full', 'milestone-hide'], attrs={'hidden': 'true'}) }}
 {% else %} 
-{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''), value=existing_mile_smtid, classes=['control-full'], attrs={'hidden': 'true'}) }}
+{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''), value=existing_mile_smtid, classes=['control-full', 'milestone-hide'], attrs={'hidden': 'true'}) }}
 {% endif %}
 {% endblock %}
 
