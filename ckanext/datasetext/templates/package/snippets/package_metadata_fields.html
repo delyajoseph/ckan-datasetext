@@ -2,8 +2,9 @@
 
 
 {% set keyresearchers_available = h.organizations_keyresearcher_available(data.group_id) %}
-{% set organizations_milestones_available = h.organizations_milestones_available() %}
+{% set milestones_available = h.organizations_milestones_available() %}
 
+{% set existing_org = data.owner_org or data.group_id %}
 
 {% block package_metadata_fields %}
   
@@ -24,30 +25,34 @@
     </div>
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
     <div class="row">
         <div class="col-md-12">
-           {# <!--{% block package_basic_fields_abstract %}
-            {{ form.markdown('abstract', id='field-abstract', label=_('Project Performance Target'), placeholder=_('Abstract of the project performance target'), value=data.abstract, error=errors.abstract) }}
-            {% endblock %}-->#}
-            <label>Project Performance Target:</label>
+           
+            <label>Project Performance Target</label>
             <input id="ppt" type="text" class="form-control" disabled/>
         </div>
     </div>
-</div>
+</div>-->
 
 <div class="form-group">
     <!--{% set error = errors.program_id %}-->
     <label class="control-label" for="field-milestone">{{ _("Relevant project milestone no ") }}</label>
+
     <div class="controls">
         <div class="row">
             <div class="col-md-12">
            
                <select id="field-milestone" name="milestone_id" class="form-control" onchange="display_milestone_stmt()">
                     {% set empty_milestone = _('Please select the Milestone') %}
+                    {% set existing_mile_id = data.get('milestone_id') %}
                     <option value="">{{ empty_milestone }}</option>
-                    {% for ml in organizations_milestones_available %}
-                    <option id="{{ml.id}}" data-mile_stmt="{{ml.m_stmt}}" data-groupid="{{ml.group_id}}" value="{{ ml.id }}">{{ ml.m_id }} - {{ ml.m_due }}</option>
+                    {% for ml in milestones_available %}
+                            <option {% if existing_mile_id|int == ml.id %} selected="selected" {% endif %} 
+                            id="{{ml.id}}" data-mile_stmt="{{ml.m_stmt}}" data-mile_stmtid="{{ml.m_id}} - {{ ml.m_due }}" 
+                            data-groupid="{{ml.group_id}}" value="{{ ml.id }}"
+                            {% if existing_org != ml.group_id %} style="display: none;" {% endif %}>
+                        {{ ml.m_id }} - {{ ml.m_due }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -55,14 +60,30 @@
     </div>
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
     <label class="control-label" for="field-milestone">{{ _("Milestone statement") }}</label>
     
     <div class="row">
         <div class="col-md-12">
-            <input id="mile_stmt" type="text" class="form-control" disabled/>
+            
+            <input id="field-mile_stmt" name="mile_stmtname"type="text" class="form-control" disabled/>
+           
         </div>
     </div>
-</div>
+</div>-->
+{% set existing_mile_smt = data.get('mile_stmtname') %}
+{% if existing_mile_smt ==''%} 
+{{ form.input('mile_stmtname', id='field-mile_stmt', label=_('Milestone statement'),classes=['control-full'], attrs={'readonly' : 'true'}) }}
+{% else %} 
+{{ form.input('mile_stmtname', id='field-mile_stmt', label=_('Milestone statement'), value=existing_mile_smt, classes=['control-full'], attrs={'readonly': 'true'}) }}
+{% endif %}
 
+{% set existing_mile_smtid = data.get('mile_stmtid') %}
+{% if existing_mile_smtid ==''%} 
+{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''),classes=['control-full'], attrs={'hidden': 'true'}) }}
+{% else %} 
+{{ form.input('mile_stmtid', id='field-mile_stmtid', label=_(''), value=existing_mile_smtid, classes=['control-full'], attrs={'hidden': 'true'}) }}
+{% endif %}
 {% endblock %}
+
+
