@@ -213,7 +213,9 @@ html{
   min-height: 500px !important;
 }
 
-input#is_keyresearcher {
+input#is_keyresearcher, 
+input#is_project_leader,
+input#is_program_leader  {
   width: 15px !important;
   display: initial;
   height: 15px;
